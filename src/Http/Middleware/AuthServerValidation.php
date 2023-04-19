@@ -68,7 +68,7 @@ class AuthServerValidation
 
     private function getKey($private = false)
     {
-        $publicKey = Storage::get(config('auth-server.public_key', 'auth-server-public.key'));
+        $publicKey = Storage::get(config('authserver.public_key', 'auth-server-public.key'));
 
         if (!$publicKey) {
             throw new Exception('Key is missing.', 500);

@@ -19,7 +19,7 @@ class Profiles extends Base
 
     public function register($user, bool $initialUser = true, string $externalTid = null) : Profile
     {
-        $this->setResourceEndpoint('/profile/register');
+        $this->setResourceEndpoint('profile/register');
 
         $this->object->email = $user->email;
         $this->object->externalId = $user->id;

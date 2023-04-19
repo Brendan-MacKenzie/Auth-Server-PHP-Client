@@ -8,10 +8,10 @@ use BrendanMacKenzie\AuthServerClient\Resources\Profiles;
 /**
  * Class Client.
  */
-class Client
+class AuthServer
 {
     public const CLIENT_VERSION = '1.0.0';
-    public const ENDPOINT = 'https://authserver.test/api';
+    public const ENDPOINT = 'http://host.docker.internal:380/api';
 
     protected $token;
 

@@ -16,7 +16,8 @@
         "php": ">=7.3|~8.0.0|~8.1.0",
         "ext-curl": "*",
         "ext-json": "*",
-        "firebase/php-jwt": "^6.4"
+        "firebase/php-jwt": "^6.4",
+        "guzzlehttp/guzzle": "^7.5"
     },
     "require-dev": {
         "orchestra/testbench": "^8.0"
@@ -32,7 +33,10 @@
         "laravel": {
             "providers": [
                 "BrendanMacKenzie\\AuthServerClient\\AuthServerServiceProvider"
-            ]
+            ],
+            "aliases": {
+                "AuthServer": "BrendanMacKenzie\\AuthServerClient\\Facades\\AuthServer"
+            }
         }
     }
 }

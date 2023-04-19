@@ -103,15 +103,15 @@ class Base
      */
     public function create($object, ?array $query = null)
     {
-        $body = json_encode($object, \JSON_THROW_ON_ERROR);
-        [, , $body] = $this->httpClient->performHttpRequest(
+        $body = $object->toArray();
+        $data = $this->httpClient->performHttpRequest(
             HttpClient::REQUEST_POST,
             $this->resourceEndpoint,
             $query,
             $body
         );
 
-        return $this->processRequest($body);
+        return $this->processRequest($data);
     }
 
     public function getHttpClient(): HttpClient
