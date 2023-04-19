@@ -1,0 +1,38 @@
+{
+    "name": "brendan-mackenzie/auth-server-php-client",
+    "description": "Brendan&MacKenzie REST API client for the Auth Server SaaS",
+    "type": "library",
+    "authors": [
+        {
+          "name": "Wouter de Berg",
+          "email": "wouter@brendan-mackenzie.com"
+        },
+        {
+            "name": "Terence Nelson",
+            "email": "terence@brendan-mackenzie.com"
+        }
+      ],
+    "require": {
+        "php": ">=7.3|~8.0.0|~8.1.0",
+        "ext-curl": "*",
+        "ext-json": "*",
+        "firebase/php-jwt": "^6.4"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^8.0"
+    },
+    "license": "MIT",
+    "minimum-stability": "stable",
+    "autoload": {
+        "psr-4": {
+          "BrendanMacKenzie\\AuthServerClient\\": "src"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "BrendanMacKenzie\\AuthServerClient\\AuthServerServiceProvider"
+            ]
+        }
+    }
+}
