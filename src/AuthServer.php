@@ -11,7 +11,7 @@ use BrendanMacKenzie\AuthServerClient\Resources\Profiles;
 class AuthServer
 {
     public const CLIENT_VERSION = '1.0.0';
-    public const ENDPOINT = 'http://host.docker.internal:380/api';
+    public const ENDPOINT = 'https://auth.brenzie.nl/api';
 
     protected $token;
 
