@@ -27,6 +27,11 @@ class HttpClient
     protected $client;
 
     /**
+     * @var int
+     */
+    protected $clientId;
+
+    /**
      * @var string
      */
     protected $endpoint;
@@ -93,6 +98,7 @@ class HttpClient
             'Content-Type' => 'application/json',
             'Accept-Charset' => 'utf-8',
             'Authorization' => $this->token,
+            'X-Client-Id' => $this->clientId,
         ];
 
         $headers = array_merge($headers, $this->headers);
@@ -119,8 +125,9 @@ class HttpClient
         $this->userAgent[] = $userAgent;
     }
 
-    public function setAuthentication(string $token): void
+    public function setAuthentication(int $clientId, string $token): void
     {
+        $this->clientId = $clientId;
         $this->token = $token;
     }
 
