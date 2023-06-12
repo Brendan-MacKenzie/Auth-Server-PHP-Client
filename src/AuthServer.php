@@ -11,7 +11,6 @@ use BrendanMacKenzie\AuthServerClient\Resources\Profiles;
 class AuthServer
 {
     public const CLIENT_VERSION = '1.0.0';
-    public const ENDPOINT = 'https://auth.brenzie.nl/api';
 
     protected $clientId;
     protected $token;
@@ -30,7 +29,7 @@ class AuthServer
     {
         $this->clientId = config('authserver.client_id');
         $this->token = config('authserver.token');
-        $this->httpClient = new HttpClient(self::ENDPOINT);
+        $this->httpClient = new HttpClient(config('authserver.url'));
         $this->httpClient->addUserAgentString('AuthServer/ApiClient/'.self::CLIENT_VERSION);
         $this->httpClient->setAuthentication($this->clientId, $this->token);
         $this->httpClient->addUserAgentString($this->getPhpVersion());
