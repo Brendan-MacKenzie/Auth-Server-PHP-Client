@@ -4,6 +4,7 @@ namespace BrendanMacKenzie\AuthServerClient;
 
 use BrendanMacKenzie\AuthServerClient\Common\HttpClient;
 use BrendanMacKenzie\AuthServerClient\Resources\Profiles;
+use BrendanMacKenzie\AuthServerClient\Resources\Users;
 
 /**
  * Class Client.
@@ -40,6 +41,16 @@ class AuthServer
     public function register($user, bool $initialUser = true, string $externalTid = null)
     {
         return $this->profiles->register($user, $initialUser, $externalTid);
+    }
+
+    public function show(int $profileId)
+    {
+        return $this->profiles->show($profileId);
+    }
+
+    public function updateEmail(int $profileId, string $email)
+    {
+        return $this->profiles->updateEmail($profileId, $email);
     }
 
     private function getPhpVersion(): string

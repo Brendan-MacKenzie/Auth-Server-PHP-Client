@@ -22,9 +22,6 @@ class Base
      */
     protected $resourceEndpoint;
 
-    /**
-     * @var \BrendanMacKenzie\AuthServerClient\Objects\Profile
-     */
     protected $object;
 
     public function __construct(HttpClient $httpClient)
@@ -51,6 +48,14 @@ class Base
     public function getObject()
     {
         return $this->object;
+    }
+
+    /**
+     * @param mixed $object
+     */
+    public function setObject($object): void
+    {
+        $this->object = $object;
     }
 
     /**
@@ -83,7 +88,11 @@ class Base
                 return true;
             }
 
-            return $this->object->loadFromStdclass($body->data);
+            if ($this->object) {
+                return $this->object->loadFromStdclass($body->data);
+            }
+
+            return $body->data;
         }
     }
 
@@ -109,6 +118,28 @@ class Base
             $this->resourceEndpoint,
             $query,
             $body
+        );
+
+        return $this->processRequest($data);
+    }
+
+    public function post($body, ?array $query = null)
+    {
+        $data = $this->httpClient->performHttpRequest(
+            HttpClient::REQUEST_POST,
+            $this->resourceEndpoint,
+            $query,
+            $body
+        );
+
+        return $this->processRequest($data);
+    }
+
+    public function get()
+    {
+        $data = $this->httpClient->performHttpRequest(
+            HttpClient::REQUEST_GET,
+            $this->resourceEndpoint
         );
 
         return $this->processRequest($data);
