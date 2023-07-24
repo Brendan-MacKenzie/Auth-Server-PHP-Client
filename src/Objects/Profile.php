@@ -20,19 +20,22 @@ class Profile extends Base
     protected $profile_id;
     protected $token;
 
-    public function getProfileId(): string
+    public function getProfileId(): int
     {
         return $this->profile_id;
     }
 
-    public function getToken() : string
+    public function getToken() : mixed
     {
         return $this->token;
     }
 
     public function loadFromStdclass(stdClass $object): self
     {
-        if ($object->user) {
+        if (
+            property_exists($object, 'user') &&
+            $object->user
+        ) {
             $user = new User();
             $object->user = $user->loadFromStdclass($object->user);
         }
