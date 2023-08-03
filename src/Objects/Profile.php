@@ -17,6 +17,7 @@ class Profile extends Base
 
     public $user;
 
+    protected $user_id;
     protected $profile_id;
     protected $token;
 
@@ -28,6 +29,11 @@ class Profile extends Base
     public function getToken() : mixed
     {
         return $this->token;
+    }
+
+    public function getUserId() : int
+    {
+        return $this->user_id;
     }
 
     public function loadFromStdclass(stdClass $object): self
