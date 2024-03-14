@@ -29,6 +29,20 @@ class Profiles extends Base
         return $this->create($this->object);
     }
 
+    public function unregister($user, int $profileId, string $externalTid = null)
+    {
+        $this->setResourceEndpoint('profile/unregister');
+        $this->setObject(null);
+
+        $body = [
+            'id' => $profileId,
+            'external_id' => (string) $user->id,
+            'external_tid' => (string) $externalTid,
+        ];
+
+        return $this->post($body);
+    }
+
     public function show(int $profileId)
     {
         $this->setResourceEndpoint('profile/'.$profileId);
@@ -42,7 +56,10 @@ class Profiles extends Base
         $this->setResourceEndpoint('profile/'.$profileId.'/email');
         $this->setObject(null);
         
-        $body = ['email' => $email];
+        $body = [
+            'email' => $email
+        ];
+
         return $this->post($body);
     }
 }

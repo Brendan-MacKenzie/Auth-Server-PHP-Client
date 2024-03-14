@@ -43,6 +43,11 @@ class AuthServer
         return $this->profiles->register($user, $initialUser, $externalTid);
     }
 
+    public function unregister($user, string $externalTid = null)
+    {
+        return $this->profiles->unregister($user, $externalTid);
+    }
+
     public function show(int $profileId)
     {
         return $this->profiles->show($profileId);

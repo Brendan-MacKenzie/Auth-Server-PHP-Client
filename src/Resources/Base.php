@@ -78,7 +78,7 @@ class Base
             throw new ServerException('Got an invalid JSON response from the server.');
         }
 
-        if (!empty($body->errors) || !$body->data) {
+        if (!empty($body->errors) || !property_exists($body, 'data')) {
             $responseError = new ResponseError($body);
             throw new RequestException($responseError->getErrorString());
         }

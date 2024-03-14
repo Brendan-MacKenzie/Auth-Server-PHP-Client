@@ -22,7 +22,7 @@ class ResponseError
             }
         }
 
-        if ($body->message) {
+        if (isset($body->message)) {
             $this->errors[] = $body->message;
         }
     }
